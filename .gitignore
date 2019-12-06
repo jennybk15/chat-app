@@ -1,1 +1,6 @@
-*.ncb
+node_modules/
+/.idea/workspace.xml
+/.idea/watcherTasks.xml
+/.idea/runConfigurations/Easyjet.xml
+/.idea/runConfigurations/SIA.xml
+

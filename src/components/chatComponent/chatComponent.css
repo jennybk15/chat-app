@@ -1,0 +1,8 @@
+.card-content {
+    max-height: 100% !important;
+    height: 500px;
+    overflow: scroll !important;
+}
+.card .card-action {
+    padding: 0;
+}
