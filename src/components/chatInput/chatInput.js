@@ -1,48 +1,50 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './chatInput.css'
 
-export default class ChatInput extends React.Component {
+export const ChatInput = (props) => {
 
-    onSubmit = (e) => {
+    const inputEl  = useRef(null);
+    const {dispatch, senderName} = props;
+
+    const onSubmit = (e) => {
         e.preventDefault();
 
-        const message = this.refs.txtMessage.value;
+        const message = inputEl.current.value;
         if (message.length === 0) {
             return;
         }
         const messageToSend = {
-            senderName: this.props.senderName,
+            senderName: senderName,
             text: message,
             date: new Date().valueOf()
         };
 
-        this.props.sendMessage(messageToSend);
+        dispatch({type: 'sendMessage', msg: messageToSend});
 
-        this.refs.txtMessage.value = '';
-        this.refs.txtMessage.focus();
+        inputEl.current.value = '';
+        inputEl.current.focus();
     };
 
-    render() {
-        return (
-            <div className="">
-                <form className="container" onSubmit={this.onSubmit}>
-                    <div className="row">
-                        <div className="input-field col s10">
-                            <i className="prefix mdi-communication-chat"/>
-                            <input
-                                type="text"
-                                ref="txtMessage"
-                                placeholder="Type a message"/>
+    return (
+        <div className="card-action">
+            <form className="container" onSubmit={onSubmit}>
+                <div className="row">
+                    <div className="input-field col s10">
+                        <i className="prefix mdi-communication-chat"/>
+                        <input
+                            type="text"
+                            ref={inputEl}
+                            placeholder="Type a message"/>
 
-                        </div>
-                        <div className="input-field col s2">
-                            <button type="submit" className="waves-effect waves-light btn-floating btn-small">
-                                <i className="mdi-content-send"/>
-                            </button>
-                        </div>
                     </div>
-                </form>
-            </div>
-        );
-    }
-}
+                    <div className="input-field col s2">
+                        <button type="submit" className="waves-effect waves-light btn-floating btn-small">
+                            <i className="mdi-content-send"/>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+
+};

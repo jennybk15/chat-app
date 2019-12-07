@@ -1,18 +1,19 @@
 import React from 'react';
 import './chatHistory.css';
-import ChatHistoryItem from '../chatHistoryItem/chatHistoryItem';
+import {ChatHistoryItem} from '../chatHistoryItem/chatHistoryItem';
 
-export default class ChatHistory extends React.Component {
+export const ChatHistory = (props) => {
 
-   render() {
-       const { viewOwner, isGroupChat, messages } = this.props;
-        return(
+    const { viewOwner, isGroupChat, messages } = props;
+
+    return (
+        <div className="card-content">
             <ul className="collection">
                 {messages.map((message) => {
                     return (
                         <ChatHistoryItem
-                            isGroupChat = {isGroupChat}
-                            ownerIsSender = {viewOwner.name === message.senderName}
+                            isGroupChat={isGroupChat}
+                            ownerIsSender={viewOwner.name === message.senderName}
                             key={message.date}
                             senderName={message.senderName}
                             date={message.date}
@@ -21,6 +22,8 @@ export default class ChatHistory extends React.Component {
 
                 })}
             </ul>
-        );
-    }
-}
+        </div>
+
+    );
+
+};
