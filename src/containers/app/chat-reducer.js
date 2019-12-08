@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const chatReducer = (state, action) =>{
-    switch(action.type){
+export const chatReducer = (state, action) => {
+    switch (action.type) {
         case 'sendMessage':
             return {
                 messages: [...state.messages, {
@@ -9,7 +9,8 @@ export const chatReducer = (state, action) =>{
                     text: action.msg.text,
                     date: action.msg.date
                 }],
-            participants: state.participants};
+                participants: state.participants
+            };
         case 'addNewUser':
             return {
                 participants: [...state.participants, {
@@ -17,7 +18,8 @@ export const chatReducer = (state, action) =>{
                     name: action.userDetails.name,
                     avatar: action.userDetails.avatar
                 }],
-            messages: state.messages};
+                messages: state.messages
+            };
         default:
             return state;
     }

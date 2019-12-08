@@ -1,8 +1,8 @@
 import React from 'react';
-import './chatComponent.css';
-import {ChatInput} from '../../components/chatInput/chatInput';
-import {ChatHistory} from '../../components/chatHistory/chatHistory';
-import {ChatHeader} from '../../components/chatHeader/chatHeader'
+import './chat-component.css';
+import {ChatInput} from '../chat-input/chat-input';
+import {ChatHistory} from '../chat-history/chat-history';
+import {ChatHeader} from '../chat-header/chat-header'
 
 export const ChatComponent = (props) => {
     const { viewOwner, isGroupChat, dispatch, messages } = props;

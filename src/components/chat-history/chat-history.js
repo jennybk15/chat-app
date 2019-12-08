@@ -1,6 +1,6 @@
 import React from 'react';
-import './chatHistory.css';
-import {ChatHistoryItem} from '../chatHistoryItem/chatHistoryItem';
+import './chat-history.css';
+import {ChatHistoryItem} from '../chat-history-item/chat-history-item';
 
 export const ChatHistory = (props) => {
 

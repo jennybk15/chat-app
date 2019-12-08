@@ -1,6 +1,6 @@
 import React from 'react';
-import {formatDate} from '../../utils/dateTimeUtils';
-import './chatHistoryItem.css';
+import {formatDate} from '../../utils/date-time-utils';
+import './chat-history-item.css';
 
 export const ChatHistoryItem = (props) => {
 

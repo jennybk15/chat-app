@@ -1,15 +1,15 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import './app.css';
-import {ChatComponent} from '../../components/chatComponent/chatComponent';
-import {ChatAddUser} from '../../components/chat-add-user/chat-add-user';
-import {chatParticipants} from '../../data/chatParticipants';
-import {chatReducer} from "./chat-reducer";
+import { ChatComponent } from '../../components/chat-component/chat-component';
+import { ChatAddUser } from '../../components/chat-add-user/chat-add-user';
+import { chatReducer } from "./chat-reducer";
+import { chatParticipants } from '../../data/chat-participants';
 
 const App = () => {
 
     const initialState = {
-        messages:[],
-        participants: chatParticipants
+        messages: [],
+        participants: []
     };
 
     const [state, dispatch] = useReducer(chatReducer, initialState);
@@ -31,28 +31,21 @@ const App = () => {
 
     return (
         <div className="container">
-            <nav>
-                <div className="nav-wrapper">
-
-                    <ChatAddUser dispatch={dispatch} />
-                </div>
-            </nav>
-
+            <ChatAddUser dispatch={ dispatch } users={ state.participants }/>
             <div className="row">
-                {state.participants.map((participant) => {
+                { state.participants.map((participant) => {
                     return (
-                        <div className={chatComponentWrapperClass}>
+                        <div className={ chatComponentWrapperClass }>
                             <ChatComponent
-                                key={participant.id}
-                                isGroupChat={isGroupChat}
-                                viewOwner={participant}
-                                messages={state.messages}
-                                dispatch = {dispatch}
-                                />
+                                key={ participant.id }
+                                isGroupChat={ isGroupChat }
+                                viewOwner={ participant }
+                                messages={ state.messages }
+                                dispatch={ dispatch }
+                            />
                         </div>
                     )
-                })};
-
+                })}
             </div>
         </div>
     );

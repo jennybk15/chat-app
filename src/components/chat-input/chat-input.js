@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import './chatInput.css'
+import './chat-input.css'
 
 export const ChatInput = (props) => {
 
