@@ -9,7 +9,7 @@ const App = () => {
 
     const initialState = {
         messages: [],
-        participants: []
+        participants: chatParticipants
     };
 
     const [state, dispatch] = useReducer(chatReducer, initialState);

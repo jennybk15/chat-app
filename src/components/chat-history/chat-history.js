@@ -18,6 +18,7 @@ export const ChatHistory = (props) => {
                             senderName={message.senderName}
                             date={message.date}
                             text={message.text}
+                            isUserJoined = {message.isUserJoined}
                         />);
 
                 })}

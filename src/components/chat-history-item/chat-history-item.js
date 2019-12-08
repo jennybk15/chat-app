@@ -4,25 +4,45 @@ import './chat-history-item.css';
 
 export const ChatHistoryItem = (props) => {
 
-    const {ownerIsSender, index, isGroupChat, senderName, text, date} = props;
-    const clsName = props.ownerIsSender ? "blue-text title light-green accent-1 right-align" : "title";
+    const {ownerIsSender, senderName, text, date, isUserJoined} = props;
+
+    const displaySenderName = !isUserJoined && !ownerIsSender;
+    const getMsgClass = () => {
+
+        let clsName = 'title blue-text accent-1';
+        if(isUserJoined) {
+            clsName = clsName + ' light-blue ';
+        }
+        else if (ownerIsSender){
+            clsName = clsName + ' light-green';
+        }
+        return clsName;
+    };
+
+    const getAlignClass = () => {
+        return ownerIsSender && !isUserJoined ? 'right-align' :'left-align';
+    };
+
     return (
-        <li className={"collection-item " + clsName} key={index}>
-            {isGroupChat && !ownerIsSender &&
-            <span className={clsName}>{senderName}</span>}
-            <p>
-
-                {ownerIsSender && <div className="right-align">
+        <li className={"collection-item " + getMsgClass()} key={date}>
+            {displaySenderName && <span>{senderName}</span>}
+            <div className={getAlignClass()}>
+                {isUserJoined && <span className="message-text blue-text accent-1">{senderName}</span>}
+                <span className="message-text">{text}</span>
+                <span className="message-date">{formatDate(date)}</span>
+            </div>
+           {/* <p>
+                {ownerIsSender && !isUserJoined && <div className="right-align">
                     <span className="message-text">{text}</span>
                     <span className="message-date">{formatDate(date)}</span>
                 </div>}
 
-                {!ownerIsSender && <div className="left-align">
+                {!ownerIsSender && !isUserJoined && <div className="left-align">
 
                     <span className="message-text">{text}</span>
                     <span className="message-date">{formatDate(date)}</span>
                 </div>}
-            </p>
+            </p>*/}
         </li>
     );
 

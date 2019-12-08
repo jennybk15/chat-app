@@ -12,13 +12,17 @@ export const ChatAddUser = (props) => {
         if (userName.length === 0) {
             return;
         }
-        const userDetails = {
-            id: users.length,
-            name: userName,
-            avatar: '//robohash.org/'+ users.length + userName + '?set=set4&bgset=bg2&size=70x70'
+
+        const msg = {
+            userDetails: {
+                id: users.length,
+                name: userName,
+                avatar: '//robohash.org/'+ users.length + userName + '?set=set4&bgset=bg2&size=70x70'
+            },
+            date: new Date().valueOf()
         };
 
-        dispatch({ type: 'addNewUser', userDetails: userDetails });
+        dispatch({ type: 'addNewUser', msg: msg });
 
         inputEl.current.value = '';
         inputEl.current.focus();
@@ -28,7 +32,7 @@ export const ChatAddUser = (props) => {
         <nav>
             <div className="nav-wrapper">
                 <div className="row">
-                    <form className="container" onSubmit={ onSubmit }>
+                    <form onSubmit={ onSubmit }>
                         <div className="input-field col s3">
                             <input type="text"
                                    ref={ inputEl }
