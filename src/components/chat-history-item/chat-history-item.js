@@ -7,9 +7,9 @@ export const ChatHistoryItem = (props) => {
     const {ownerIsSender, senderName, text, date, isUserJoined} = props;
 
     const displaySenderName = !isUserJoined && !ownerIsSender;
-    const getMsgClass = () => {
 
-        let clsName = 'title blue-text accent-1';
+    const getMsgClass = () => {
+        let clsName = 'collection-item title blue-text accent-1';
         if(isUserJoined) {
             clsName = clsName + ' light-blue ';
         }
@@ -24,26 +24,13 @@ export const ChatHistoryItem = (props) => {
     };
 
     return (
-        <li className={"collection-item " + getMsgClass()} key={date}>
+        <li className={getMsgClass()} key={date}>
             {displaySenderName && <span>{senderName}</span>}
             <div className={getAlignClass()}>
                 {isUserJoined && <span className="message-text blue-text accent-1">{senderName}</span>}
                 <span className="message-text">{text}</span>
                 <span className="message-date">{formatDate(date)}</span>
             </div>
-           {/* <p>
-                {ownerIsSender && !isUserJoined && <div className="right-align">
-                    <span className="message-text">{text}</span>
-                    <span className="message-date">{formatDate(date)}</span>
-                </div>}
-
-                {!ownerIsSender && !isUserJoined && <div className="left-align">
-
-                    <span className="message-text">{text}</span>
-                    <span className="message-date">{formatDate(date)}</span>
-                </div>}
-            </p>*/}
         </li>
     );
-
 };

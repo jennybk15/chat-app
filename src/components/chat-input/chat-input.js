@@ -1,10 +1,10 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import './chat-input.css'
 
 export const ChatInput = (props) => {
 
-    const inputEl  = useRef(null);
-    const {dispatch, senderName} = props;
+    const inputEl = useRef(null);
+    const { dispatch, senderName } = props;
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ export const ChatInput = (props) => {
             date: new Date().valueOf()
         };
 
-        dispatch({type: 'sendMessage', msg: messageToSend});
+        dispatch({ type: 'sendMessage', msg: messageToSend });
 
         inputEl.current.value = '';
         inputEl.current.focus();
@@ -27,15 +27,14 @@ export const ChatInput = (props) => {
 
     return (
         <div className="card-action">
-            <form className="container" onSubmit={onSubmit}>
+            <form className="container" onSubmit={ onSubmit }>
                 <div className="row">
                     <div className="input-field col s10">
                         <i className="prefix mdi-communication-chat"/>
                         <input
                             type="text"
-                            ref={inputEl}
+                            ref={ inputEl }
                             placeholder="Type a message"/>
-
                     </div>
                     <div className="input-field col s2">
                         <button type="submit" className="waves-effect waves-light btn-floating btn-small">

@@ -17,7 +17,7 @@ export const ChatAddUser = (props) => {
             userDetails: {
                 id: users.length,
                 name: userName,
-                avatar: '//robohash.org/'+ users.length + userName + '?set=set4&bgset=bg2&size=70x70'
+                avatar: '//robohash.org/' + users.length + userName + '?set=set4&bgset=bg2&size=70x70'
             },
             date: new Date().valueOf()
         };
