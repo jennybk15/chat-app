@@ -15,12 +15,8 @@ export const ChatHistory = (props) => {
                             isGroupChat={isGroupChat}
                             ownerIsSender={viewOwner.name === message.senderName}
                             key={message.date}
-                            senderName={message.senderName}
-                            date={message.date}
-                            text={message.text}
-                            isUserJoined = {message.isUserJoined}
+                            {...message}
                         />);
-
                 })}
             </ul>
         </div>

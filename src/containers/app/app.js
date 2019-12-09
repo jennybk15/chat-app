@@ -13,6 +13,7 @@ const App = () => {
     };
 
     const [state, dispatch] = useReducer(chatReducer, initialState);
+    const { participants, messages } = state;
 
     const getChatComponentWrapperClass = (participantsLength) => {
         let colSpan = 4;
@@ -26,21 +27,21 @@ const App = () => {
         return "col s" + colSpan;
     };
 
-    const chatComponentWrapperClass = getChatComponentWrapperClass(state.participants.length);
-    const isGroupChat = state.participants.length > 2;
+    const chatComponentWrapperClass = getChatComponentWrapperClass(participants.length);
+    const isGroupChat = participants.length > 2;
 
     return (
         <div className="container">
-            <ChatAddUser dispatch={ dispatch } users={ state.participants }/>
+            <ChatAddUser dispatch={ dispatch } users={ participants }/>
             <div className="row">
-                { state.participants.map((participant) => {
+                { participants.map((participant) => {
                     return (
                         <div className={ chatComponentWrapperClass }>
                             <ChatComponent
                                 key={ participant.id }
                                 isGroupChat={ isGroupChat }
                                 viewOwner={ participant }
-                                messages={ state.messages }
+                                messages={ messages }
                                 dispatch={ dispatch }
                             />
                         </div>
